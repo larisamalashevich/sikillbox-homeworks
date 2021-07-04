@@ -1,0 +1,144 @@
+:root {
+  --body-color: #96bba9;
+  --font-color: #053a11;
+  --background-color: #afd3c1;
+  --hover-color: #98cfb3;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+  color: var(--font-color);
+}
+
+body {
+  height: 100vh;
+  background: var(--body-color);
+}
+.memory-game {
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(25% - 20px);
+  height: calc(25% - 20px);
+  margin: 10px;
+  position: relative;
+  box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  border-radius: 5px;
+
+  background: var(--background-color);
+}
+.memory-card:hover {
+  transform: scale(1.05);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 5px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}
+.front-face {
+  font-family: Tahoma, sans-serif;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+}
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.game-panel {
+  width: 640px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+}
+
+.btn:hover {
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+}
+.btn:focus,
+.btn:active {
+  background-color: #80d1a7 !important;
+  border-color: #80d1a7 !important;
+  box-shadow: 0 0 0 0.2rem #80d1a780 !important;
+}
+
+.modal-dialog {
+  border: none;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 1px 0 10px #00000080;
+}
+[class*="modal-"] {
+  background-color: var(--body-color);
+  border: none;
+}
+
+.form-control {
+  background-color: var(--background-color);
+  border-color: var(--font-color);
+}
+
+.form-control:focus {
+  background-color: var(--background-color);
+  border-color: var(--font-color);
+  box-shadow: 0 0 0 5px #053a1120;
+}
+
+.div-timer {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.div-progress-timer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 0.25rem;
+  background-color: var(--hover-color);
+
+  transition: width 0.2s linear;
+}
+
+.div-timer span {
+  z-index: 10;
+}
